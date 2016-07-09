@@ -12,6 +12,12 @@ defmodule Color do
     end)
   end
 
+  def to_hexadecimal([]), do: ""
+  def to_hexadecimal([head | tail]) do
+    value = head * 255 |> round
+    (:io_lib.format("~2.16.0B", [value]) |> to_string) <> to_hexadecimal(tail)
+  end
+
   def lighten(values, amount) do
     values |> Enum.map(&(&1 + amount))
   end

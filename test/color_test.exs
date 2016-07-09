@@ -26,6 +26,12 @@ defmodule ColorTest do
     assert Color.from_hexadecimal("0F0F0F") == [0.058823529411764705, 0.058823529411764705, 0.058823529411764705]
   end
 
+  test "converts a list of RGB colors to a hexidecimal string" do
+    assert Color.to_hexadecimal([0,0,0]) == "000000"
+    assert Color.to_hexadecimal([1,1,1]) == "FFFFFF"
+    assert Color.to_hexadecimal([0.058823529411764705, 0.058823529411764705, 0.058823529411764705]) == "0F0F0F"
+  end
+
   test "lightens a color" do
     assert [0,0,0] |> Color.lighten(0) == [0,0,0]
     assert [0,0,0] |> Color.lighten(1) == [1,1,1]
