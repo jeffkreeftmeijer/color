@@ -1,0 +1,2 @@
+defmodule Color do
+end
