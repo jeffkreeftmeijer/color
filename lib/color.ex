@@ -19,9 +19,9 @@ defmodule Color do
     base / 255
   end
 
-  defp to_rgb(value) do
-    value
-    |> Enum.map(&hexadecimal_to_color_value/1)
+  defp to_rgb([]), do: []
+  defp to_rgb([head | tail]) do
+    [hexadecimal_to_color_value(head) | to_rgb(tail)]
   end
 
   def to_hexadecimal([]), do: ""
