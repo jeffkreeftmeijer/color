@@ -18,11 +18,9 @@ defmodule Color do
     (:io_lib.format("~2.16.0B", [value]) |> to_string) <> to_hexadecimal(tail)
   end
 
-  def lighten(values, amount) do
-    values |> Enum.map(&(&1 + amount))
-  end
+  def lighten([], _), do: []
+  def lighten([head | tail], amount), do: [head + amount | lighten(tail, amount)]
 
-  def darken(values, amount) do
-    values |> Enum.map(&(&1 - amount))
-  end
+  def darken([], _), do: []
+  def darken([head | tail], amount), do: [head - amount | darken(tail, amount)]
 end
