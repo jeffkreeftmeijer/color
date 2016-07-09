@@ -11,4 +11,12 @@ defmodule Color do
      base / 255
     end)
   end
+
+  def lighten(values, amount) do
+    values |> Enum.map(&(&1 + amount))
+  end
+
+  def darken(values, amount) do
+    values |> Enum.map(&(&1 - amount))
+  end
 end
