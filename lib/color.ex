@@ -4,12 +4,24 @@ defmodule Color do
   def blue([_, _, blue]), do: blue
 
   def from_hexadecimal(hexadecimal) do
+    hexadecimal
+    |> split_hexadecimal
+    |> to_rgb
+  end
+
+  defp split_hexadecimal(hexadecimal) do
     Regex.scan(~r/../, hexadecimal) 
     |> List.flatten
-    |> Enum.map(fn(value) -> 
-     {base, _} = value |> Integer.parse(16)
-     base / 255
-    end)
+  end
+
+  defp hexadecimal_to_color_value(hexadecimal) do
+    {base, _} =  hexadecimal |> Integer.parse(16)
+    base / 255
+  end
+
+  defp to_rgb(value) do
+    value
+    |> Enum.map(&hexadecimal_to_color_value/1)
   end
 
   def to_hexadecimal([]), do: ""
