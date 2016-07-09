@@ -10,4 +10,10 @@ defmodule Color do
     {base, _} = green |> Integer.parse(16)
     base / 255
   end
+
+  def blue(color) do
+    [_, _, blue] = Regex.scan(~r/../, color) |> List.flatten
+    {base, _} = blue |> Integer.parse(16)
+    base / 255
+  end
 end
