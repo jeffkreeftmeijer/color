@@ -1,24 +1,19 @@
 # Color
 
-**TODO: Add description**
+Converts hexadecimal color representations to RGB values.
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
+``` elixir
+# mix.exs
+def deps do
+  [{:colorscheme, git: "git://github.com/jeffkreeftmeijer/color.git"}]
+end
+```
 
-  1. Add `color` to your list of dependencies in `mix.exs`:
+## Usage
 
-    ```elixir
-    def deps do
-      [{:color, "~> 0.1.0"}]
-    end
-    ```
-
-  2. Ensure `color` is started before your application:
-
-    ```elixir
-    def application do
-      [applications: [:color]]
-    end
-    ```
-
+``` elixir
+Color.from_hexadecimal("F0AA03")                # => [0.9411764705882353, 0.6666666666666666, 0.011764705882352941]
+Color.from_hexadecimal("F0AA03") |> Color.blue  # => 0.011764705882352941
+```
