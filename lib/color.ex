@@ -16,4 +16,13 @@ defmodule Color do
     {base, _} = blue |> Integer.parse(16)
     base / 255
   end
+
+  def from_hexadecimal(hexadecimal) do
+    Regex.scan(~r/../, hexadecimal) 
+    |> List.flatten
+    |> Enum.map(fn(value) -> 
+     {base, _} = value |> Integer.parse(16)
+     base / 255
+    end)
+  end
 end

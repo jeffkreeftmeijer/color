@@ -19,4 +19,10 @@ defmodule ColorTest do
     assert Color.blue("0000FF") == 1
     assert Color.blue("00000F") == 0.058823529411764705
   end
+
+  test "converts a hexidecimal string to a list of RGB values" do
+    assert Color.from_hexadecimal("000000") == [0,0,0]
+    assert Color.from_hexadecimal("FFFFFF") == [1,1,1]
+    assert Color.from_hexadecimal("0F0F0F") == [0.058823529411764705, 0.058823529411764705, 0.058823529411764705]
+  end
 end
