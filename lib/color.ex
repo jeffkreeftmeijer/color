@@ -30,6 +30,11 @@ defmodule Color do
     (:io_lib.format("~2.16.0B", [value]) |> to_string) <> to_hexadecimal(tail)
   end
 
+  def mix(color, color), do: color
+  def mix([base | base_tail], [color | color_tail]) do
+    [(base + color) / 2 | mix(base_tail, color_tail)]
+  end
+
   def lighten([], _), do: []
   def lighten([head | tail], amount), do: [head + amount | lighten(tail, amount)]
 

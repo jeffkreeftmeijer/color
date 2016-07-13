@@ -32,6 +32,11 @@ defmodule ColorTest do
     assert Color.to_hexadecimal([0.058823529411764705, 0.058823529411764705, 0.058823529411764705]) == "0F0F0F"
   end
 
+  test "mixes two colors" do
+    assert [0,0,0] |> Color.mix([0,0,0]) == [0,0,0]
+    assert [0,0,0] |> Color.mix([1,1,1]) == [0.5, 0.5, 0.5]
+  end
+
   test "lightens a color" do
     assert [0,0,0] |> Color.lighten(0) == [0,0,0]
     assert [0,0,0] |> Color.lighten(1) == [1,1,1]
