@@ -37,6 +37,10 @@ defmodule ColorTest do
     assert [0,0,0] |> Color.mix([1,1,1]) == [0.5, 0.5, 0.5]
   end
 
+  test "mixes two colors with an opacity" do
+    assert [0,0,0] |> Color.mix([1,1,1], 0.5) == [0.25, 0.25, 0.25]
+  end
+
   test "lightens a color" do
     assert [0,0,0] |> Color.lighten(0) == [0,0,0]
     assert [0,0,0] |> Color.lighten(1) == [1,1,1]

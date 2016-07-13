@@ -31,8 +31,9 @@ defmodule Color do
   end
 
   def mix(color, color), do: color
-  def mix([base | base_tail], [color | color_tail]) do
-    [(base + color) / 2 | mix(base_tail, color_tail)]
+  def mix(color, color, _opacity), do: color
+  def mix([base | base_tail], [color | color_tail], opacity \\ 1) do
+    [(base + color * opacity) / 2 | mix(base_tail, color_tail, opacity)]
   end
 
   def lighten([], _), do: []
