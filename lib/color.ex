@@ -37,8 +37,14 @@ defmodule Color do
   end
 
   def lighten([], _), do: []
+  def lighten([head | tail], amount) when amount > (1 - head) do
+    [1 | lighten(tail, amount)]
+  end
   def lighten([head | tail], amount), do: [head + amount | lighten(tail, amount)]
 
   def darken([], _), do: []
+  def darken([head | tail], amount) when amount > head do
+    [0 | darken(tail, amount)]
+  end
   def darken([head | tail], amount), do: [head - amount | darken(tail, amount)]
 end

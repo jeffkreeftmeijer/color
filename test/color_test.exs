@@ -45,11 +45,13 @@ defmodule ColorTest do
     assert [0,0,0] |> Color.lighten(0) == [0,0,0]
     assert [0,0,0] |> Color.lighten(1) == [1,1,1]
     assert [0,0,0] |> Color.lighten(0.5) == [0.5,0.5,0.5]
+    assert [1,1,1] |> Color.lighten(1) == [1,1,1]
   end
 
   test "darkens a color" do
     assert [1,1,1] |> Color.darken(0) == [1,1,1]
     assert [1,1,1] |> Color.darken(1) == [0,0,0]
     assert [1,1,1] |> Color.darken(0.5) == [0.5,0.5,0.5]
+    assert [0,0,0] |> Color.darken(1) == [0,0,0]
   end
 end
